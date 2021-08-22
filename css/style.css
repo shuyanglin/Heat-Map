@@ -1,0 +1,51 @@
+
+:root{
+ 	--background-color: #272727;
+    --text-color: #ffffff;
+}
+
+body {
+	font-family: 'Teko', sans-serif;
+	font-size: 16px;
+	line-height: 1.25;
+	
+	background-color: var(--background-color);
+	color: var(--text-color);
+	margin: 160px auto 80px auto;
+	width: 800px;
+}
+
+header {
+  background-color: blueviolet;
+  position: fixed;
+  top:  0;
+  left:  0;
+  width:  100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 24px 48px 24px 48px;
+}
+
+select{
+    font-size: 24px;
+    color: blueviolet;
+    background-color: white;
+}
+
+option{
+    font-size: 24px;
+    color: blueviolet;
+    background-color: white;
+}
+
+h1 {
+  font-size: 24px;
+  max-width: 340px;
+  background-image:  url(../img/temp.svg);
+  background-repeat: no-repeat;
+  background-position: left center;
+  padding-left:  64px;
+}
+
+
