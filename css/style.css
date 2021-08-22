@@ -40,18 +40,28 @@ option{
 }
 
 h1 {
-  font-size: 24px;
-  max-width: 340px;
-  background-image:  url(../img/temp.svg);
-  background-repeat: no-repeat;
-  background-position: left center;
-  padding-left:  64px;
+    font-size: 24px;
+    max-width: 340px;
+    background-image:  url(../img/temp.svg);
+    background-repeat: no-repeat;
+    background-position: left center;
+    padding-left:  64px;
+}
+svg {
+    background-color: var(--background-color);
 }
 
 text {
-  fill: var(--text-color);
+    fill: var(--text-color);
+    text-anchor: end;
 }
 
 text.city {
-  font-size:  32px;
+    font-size: 32px;
+}
+
+text.temperature{
+    text-anchor: middle;
+    dominant-baseline: middle;
+    fill: black;
 }
