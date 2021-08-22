@@ -44,6 +44,10 @@ const colorScale = d3.scaleLinear()
     .domain([-10, 0, 7, 14, 21, 25])
     .range(["#814ee7", "#3f24ec","#79e87C","#fbe157","#ff9737","#fe3b3b"]);
 
+const boxScale = d3.scaleLinear()
+	.domain([-20, 45])
+	.range([150, 0])
+
 monthGroups
 	.append("rect")
 	.attr("x",0)
@@ -55,15 +59,41 @@ monthGroups
 monthGroups
 	.append("circle")
 	.attr("cx", 25)
-	.attr("cy", 75)
+    .attr("cy", (d, i) => { return boxScale(d) })
 	.attr("r", 15)
 	.attr("fill", "white")
 	
-monthGroups
+const temperatures = monthGroups
 	.append("text")
 	.attr("x", 25)
-	.attr("y", 77)
+	.attr("y", (d, i) => {return boxScale(d)+2})
 	.text( (d, i) => {return d})
 	.attr("class", "temperature")
 	.style("fill", (d, i) => { return colorScale(d)})
-	
+    
+    
+
+const lineGenerator = d3.line()
+	.x( (d, i) => { return 25 + 50*i})
+	.y( (d, i) => { return boxScale(d)})
+
+const monthPaths = dataPoints
+	.append("path")
+	.datum( (d, i) => {return d.months})
+    .attr("d", (d, i) => {return lineGenerator(d)})
+    .attr("transform", "translate(200, 0)")
+    
+
+const unitScale = d3.scaleLinear()
+	.domain([-273, 100])
+	.rangeRound([-459, 212])
+
+const selectTag = document.querySelector("select")
+selectTag.addEventListener( "input" , function(){
+  if (this.value === "c"){
+  	temperatures.text( (d, i) => {return d})  
+  }else if (this.value === "f"){
+    temperatures.text( (d, i) => {return unitScale(d)})  
+  }
+})
+
