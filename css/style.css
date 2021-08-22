@@ -48,4 +48,10 @@ h1 {
   padding-left:  64px;
 }
 
+text {
+  fill: var(--text-color);
+}
 
+text.city {
+  font-size:  32px;
+}
